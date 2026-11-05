@@ -7,11 +7,12 @@
 <meta name="description" content="Ζαχαροπλαστείο Μυλωνάς (Pastry Mylonas) – Ιφιγενείας 99, Καλλιθέα. Τούρτες κατά παραγγελία, γλυκά και κεράσματα. Τηλ. 210 951 3430.">
 <meta property="og:title" content="Ζαχαροπλαστείο Μυλωνάς">
 <meta property="og:image" content="../img/hero-lg.webp">
+<meta name="color-scheme" content="light">
 <meta name="theme-color" content="#fbf3e8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,500;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="../img/hero-lg.webp">
+<link rel="preload" as="image" href="../img/cake-airplane-sm.webp">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -46,18 +47,6 @@
     --line: #e8d7c3;
     --shadow: 0 10px 30px rgba(42, 23, 18, .07);
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #1c100c; --surface: #2a1a14; --cream-2: #24150f; --blush: #2e1a1c;
-      --text: #f6eadb; --muted: #c9b2a0; --line: #3e2a21;
-      --shadow: 0 14px 40px rgba(0,0,0,.4);
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #1c100c; --surface: #2a1a14; --cream-2: #24150f; --blush: #2e1a1c;
-    --text: #f6eadb; --muted: #c9b2a0; --line: #3e2a21;
-    --shadow: 0 14px 40px rgba(0,0,0,.4);
-  }
 
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -79,36 +68,38 @@
   .btn.light:hover { background: rgba(255,255,255,.12); }
 
   /* Nav */
-  .nav { position: absolute; inset: 0 0 auto; z-index: 10; color: #fff; }
+  .nav { position: absolute; inset: 0 0 auto; z-index: 10; color: var(--text); }
   .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 16px; }
-  .brand { font-family: "Noto Serif Display", serif; font-style: italic; font-size: 1.6rem; text-decoration: none; }
+  .brand { font-family: "Noto Serif Display", serif; font-style: italic; font-size: 1.6rem; text-decoration: none; color: var(--cherry); }
   .nav ul { list-style: none; display: flex; gap: 28px; margin: 0; padding: 0; font-size: .95rem; }
-  .nav ul a { text-decoration: none; opacity: .85; }
-  .nav ul a:hover { opacity: 1; }
+  .nav ul a { text-decoration: none; color: var(--muted); }
+  .nav ul a:hover { color: var(--text); }
   .nav .btn { padding: 10px 18px; font-size: .9rem; }
   @media (max-width: 760px) { .nav ul { display: none; } }
 
-  /* Hero */
-  .hero {
-    position: relative; min-height: min(92vh, 820px); display: flex; align-items: flex-end;
-    color: #fff; background: var(--cocoa); overflow: hidden;
-  }
-  .hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% center; }
-  .hero::after {
-    content: ""; position: absolute; inset: 0;
-    background: linear-gradient(90deg, rgba(30,14,10,.72) 0%, rgba(30,14,10,.35) 50%, rgba(30,14,10,0) 100%),
-                linear-gradient(0deg, rgba(30,14,10,.45), transparent 40%);
-  }
-  .hero .wrap { position: relative; z-index: 1; width: 100%; padding-bottom: 72px; }
-  .hero .eyebrow { color: #f2a7b3; }
-  .hero h1 { font-size: clamp(2.3rem, 10.5vw, 6.6rem); margin-bottom: .25em; overflow-wrap: anywhere; }
-  .hero h1 em { color: #fff; display: block; }
-  .hero p { font-size: 1.15rem; max-width: 36ch; opacity: .9; margin: 0 0 30px; }
+  /* Hero – light background with cake collage */
+  .hero { background: var(--cream); padding: 124px 0 72px; overflow: hidden; }
+  .hero .wrap { display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; align-items: center; }
+  .hero h1 { font-size: clamp(2.6rem, 4.6vw, 4rem); margin-bottom: .3em; }
+  @media (max-width: 860px) { .hero h1 { font-size: clamp(2.3rem, 10.5vw, 4rem); overflow-wrap: anywhere; } }
+  .hero h1 em { display: block; }
+  .hero p { font-size: 1.15rem; color: var(--muted); max-width: 36ch; margin: 0 0 30px; }
   .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-  @media (max-width: 760px) {
-    .hero { min-height: 82vh; }
-    .hero::after { background: linear-gradient(0deg, rgba(30,14,10,.92) 15%, rgba(30,14,10,.35) 70%, rgba(30,14,10,.5)); }
-    .hero .wrap { padding-bottom: 40px; }
+  .btn.light { background: transparent; color: var(--text); border: 1px solid var(--line); }
+  .btn.light:hover { background: var(--surface); }
+  .collage { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  .collage .col { display: grid; gap: 16px; }
+  .collage .col:nth-child(2) { margin-top: 48px; }
+  .collage img { width: 100%; height: auto; border-radius: 22px; box-shadow: var(--shadow); border: 6px solid var(--surface); }
+  .collage .col:nth-child(1) img:nth-child(1) { transform: rotate(-1.5deg); }
+  .collage .col:nth-child(1) img:nth-child(2) { transform: rotate(1deg); }
+  .collage .col:nth-child(2) img:nth-child(1) { transform: rotate(1.5deg); }
+  .collage .col:nth-child(2) img:nth-child(2) { transform: rotate(-1deg); }
+  @media (max-width: 860px) {
+    .hero { padding: 100px 0 48px; }
+    .hero .wrap { grid-template-columns: 1fr; gap: 36px; }
+    .collage { gap: 12px; } .collage .col { gap: 12px; } .collage .col:nth-child(2) { margin-top: 32px; }
+    .collage img { border-width: 4px; border-radius: 16px; }
   }
 
   /* Info strip */
@@ -214,15 +205,25 @@
 
 <main id="top">
   <section class="hero" aria-label="Ζαχαροπλαστείο Μυλωνάς">
-    <img src="../img/hero-lg.webp" srcset="../img/hero-sm.webp 720w, ../img/hero-lg.webp 960w" sizes="100vw"
-         alt="Τούρτα σοκολάτα με κεράσια και πουράκια" fetchpriority="high">
     <div class="wrap">
-      <div class="eyebrow">Ζαχαροπλαστείο · Καλλιθέα</div>
-      <h1>Ζαχαροπλαστείο <em>Μυλωνάς</em></h1>
-      <p>Τούρτες κατά παραγγελία, φρέσκα γλυκά και κεράσματα για κάθε γιορτή, στην Ιφιγενείας 99.</p>
-      <div class="actions">
-        <a class="btn" href="tel:+302109513430">Παραγγείλτε τηλεφωνικά</a>
-        <a class="btn light" href="#torts">Δείτε τις τούρτες μας</a>
+      <div>
+        <div class="eyebrow">Ζαχαροπλαστείο · Καλλιθέα</div>
+        <h1>Ζαχαροπλαστείο <em>Μυλωνάς</em></h1>
+        <p>Τούρτες κατά παραγγελία, φρέσκα γλυκά και κεράσματα για κάθε γιορτή, στην Ιφιγενείας 99.</p>
+        <div class="actions">
+          <a class="btn" href="tel:+302109513430">Παραγγείλτε τηλεφωνικά</a>
+          <a class="btn light" href="#torts">Δείτε τις τούρτες μας</a>
+        </div>
+      </div>
+      <div class="collage" aria-hidden="true">
+        <div class="col">
+          <img src="../img/cake-airplane-sm.webp" width="720" height="960" alt="" fetchpriority="high">
+          <img src="../img/cake-heart-sm.webp" width="720" height="540" alt="">
+        </div>
+        <div class="col">
+          <img src="../img/cake-minions-sm.webp" width="720" height="720" alt="">
+          <img src="../img/cake-bed-sm.webp" width="720" height="788" alt="">
+        </div>
       </div>
     </div>
   </section>
